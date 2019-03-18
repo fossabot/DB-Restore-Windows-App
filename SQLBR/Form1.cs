@@ -158,7 +158,7 @@ namespace SQLBR
             con.Close();
             Application.DoEvents();
             AddMemo("Success");
-         }
+	 }
          catch(Exception ex)
          {
             AddMemo("!!! Error - " + ex.Message);
@@ -169,8 +169,9 @@ namespace SQLBR
       {
          string bkfile = "";
 	 string database = null;
+	 
 
-	 Form2 f = new Form2(textBox3.Text, textBox1.Text, textBox2.Text, comboBox2.Text, cbIntergrated.Checked);
+	    Form2 f = new Form2(textBox3.Text, textBox1.Text, textBox2.Text, comboBox2.Text, cbIntergrated.Checked);
 	 Form3 f3 = new Form3();
 	 if (f3 != null)
 	 {
@@ -229,7 +230,11 @@ namespace SQLBR
             con.Close();
             Application.DoEvents();
             AddMemo("Success");
-         }
+	    AddMemo("Triggering Stored Procedure....");
+		// Trigger Stored Procedure after restore.
+		String connectionString = "Server=" + textBox3.Text + "; DataBase=" + database + ";Integrated Security=SSPI";
+		triggerSP(connectionString);
+	 }
          catch(Exception ex)
          {
             AddMemo("!!! Error - " + ex.Message);
@@ -237,7 +242,55 @@ namespace SQLBR
          }
       }
 
-      private void button1_Click(object sender, EventArgs e)
+	private void triggerSP(String connectionStr)
+	{
+	    // This doesn't open the Connection. conn.Open() has to be explicitly called.
+	    SqlConnection conn = new SqlConnection(connectionStr);
+	    try
+	    {
+
+		conn.Open();
+		AddMemo("Inside the Trigger....");
+		// 1.  create a command object identifying the stored procedure
+		SqlCommand cmd = new SqlCommand("usp_NestedSP", conn);
+
+		// 2. set the command object so it knows to execute a stored procedure
+		cmd.CommandType = CommandType.StoredProcedure;
+
+		// Add a check here as well.
+		// execute the command
+		SqlDataReader rdr = cmd.ExecuteReader();
+
+		// Since we are not using - using block we have to explicitly call Close() to close the connection.
+		//conn.Close();
+	    }
+	    catch (SqlException SqlEx)
+	    {
+		string[] error = new string[3];
+
+		string msg1 = "Errors Count:" + SqlEx.Errors.Count;
+		string msg2 = null;
+
+		foreach (SqlError myError in SqlEx.Errors)
+		    msg2 += myError.Number + " - " + myError.Message + "/";
+
+		error[0] = msg1;
+		error[1] = msg2;
+		AddMemo("Something went wrong......IDk what Debugg it." + msg2);
+		//WriteToFile(error);
+	    }
+
+	    finally
+	    {
+		//call this if exception occurs or not
+		//in this example, dispose the WebClient
+		conn.Close();
+		AddMemo("Connection Closed after executing the SPs....");
+	    }
+
+	}
+
+	private void button1_Click(object sender, EventArgs e)
       {
          if(radioButton1.Checked)
             DoBackup();
