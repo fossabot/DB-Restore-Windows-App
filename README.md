@@ -28,5 +28,5 @@ Please, No space, only TABS.
 
 
 
-**Original Work credit goes to User - @alnotas Repo - https://github.com/alnotas/SQLBR**
+**Original Work credit goes to User - [@alnotas](https://github.com/alnotas) Repo - https://github.com/alnotas/SQLBR**
 *Restore is my work and Added small features to it, I know I could have forked it and then worked on it but I somehow didn't pay attention to it and Cloned the repo from @alnotas and then worked on it, finally I had to make a new repo of my own and push everything there since I don't have the permission to push any changes to the @alnotas repo.*
