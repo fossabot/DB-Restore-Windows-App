@@ -242,7 +242,7 @@ namespace SQLBR
          }
       }
 
-	private void triggerSP(String connectionStr)
+      private void triggerSP(String connectionStr)
 	{
 	    // This doesn't open the Connection. conn.Open() has to be explicitly called.
 	    SqlConnection conn = new SqlConnection(connectionStr);
@@ -290,7 +290,7 @@ namespace SQLBR
 
 	}
 
-	private void button1_Click(object sender, EventArgs e)
+      private void button1_Click(object sender, EventArgs e)
       {
          if(radioButton1.Checked)
             DoBackup();
@@ -298,11 +298,10 @@ namespace SQLBR
             DoRestore();
 
       }
-
       private void label1_Click(object sender, EventArgs e)
 	{
 
 	}
-    }
+   }
 
 }
