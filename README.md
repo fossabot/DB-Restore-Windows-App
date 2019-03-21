@@ -1,4 +1,6 @@
 # DB-Restore-Windows-App
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fhirocsingh%2FDB-Restore-Windows-App.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fhirocsingh%2FDB-Restore-Windows-App?ref=badge_shield)
+
 Incredibly Mediocre Windows application to Backup and Restore Databases (Local or network)
 
 # Coding Guidelines
@@ -30,3 +32,7 @@ Please, No space, only TABS.
 
 **Original Work credit goes to User - [@alnotas](https://github.com/alnotas) Repo - https://github.com/alnotas/SQLBR**
 *Restore is my work and Added small features to it, I know I could have forked it and then worked on it but I somehow didn't pay attention to it and Cloned the repo from @alnotas and then worked on it, finally I had to make a new repo of my own and push everything there since I don't have the permission to push any changes to the @alnotas repo.*
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fhirocsingh%2FDB-Restore-Windows-App.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fhirocsingh%2FDB-Restore-Windows-App?ref=badge_large)
